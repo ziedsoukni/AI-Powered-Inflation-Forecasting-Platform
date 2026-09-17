@@ -1,0 +1,428 @@
+import streamlit as st
+import pandas as pd
+import os
+import sys
+import importlib.util
+from streamlit_option_menu import option_menu
+from pathlib import Path
+import logging
+
+# Configuration du logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# 🎨 Configuration de la page
+st.set_page_config(
+    page_title="MajestEYE - Plateforme d'Analyse Économique",
+    page_icon="👑",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# 📁 Configuration des chemins
+BASE_DIR = Path(__file__).parent
+MODULES_DIR = BASE_DIR / "modules"
+ASSETS_DIR = BASE_DIR / "assets"
+LOGO_PATH = ASSETS_DIR / "logo.png"
+
+# 🛠️ Fonctions utilitaires
+def load_module(module_name: str, **kwargs):
+    """Charge dynamiquement un module Python avec gestion d'erreurs."""
+    module_path = MODULES_DIR / f"{module_name}.py"
+    
+    if not module_path.exists():
+        st.error(f"Module `{module_name}.py` introuvable dans {MODULES_DIR}")
+        return False
+    
+    try:
+        spec = importlib.util.spec_from_file_location(module_name, module_path)
+        module = importlib.util.module_from_spec(spec)
+        
+        # Injection des variables dans le module
+        for key, value in kwargs.items():
+            setattr(module, key, value)
+        
+        spec.loader.exec_module(module)
+        
+        # Important : enregistrer dans sys.modules pour pouvoir le récupérer plus tard
+        sys.modules[module_name] = module
+        
+        return True
+    except Exception as e:
+        st.error(f"Erreur lors du chargement du module {module_name}: {str(e)}")
+        logger.error(f"Erreur module {module_name}: {e}")
+        return False
+
+
+def display_logo():
+    """Affiche le logo de manière centrée."""
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if LOGO_PATH.exists():
+            st.image(str(LOGO_PATH), use_container_width=True)
+        else:
+            st.info("💡 Logo non trouvé. Placez votre logo dans `assets/logo.png`")
+
+def create_sidebar_menu():
+    """Crée le menu latéral avec style personnalisé."""
+    with st.sidebar:
+        selected = option_menu(
+            menu_title="MajestEYE",
+            options=[
+                "🏠 Accueil",
+                "🧠 NLP",
+                "📈 Prédiction",
+                "📊 Dashboard",
+                "🧩 Leviers Économiques"
+            ],
+            icons=["house", "chat-dots", "graph-up", "bar-chart", "puzzle"],
+            default_index=0,
+            styles={
+                "container": {"padding": "5px", "background-color": "#f0f2f6"},
+                "icon": {"color": "#004080", "font-size": "18px"},
+                "nav-link": {
+                    "font-size": "16px", 
+                    "margin": "5px",
+                    "text-align": "left"
+                },
+                "nav-link-selected": {
+                    "background-color": "#0073e6", 
+                    "color": "white"
+                },
+            }
+        )
+    return selected
+
+def page_accueil():
+    """Page d'accueil avec présentation de l'application."""
+    st.title("👑 Bienvenue sur MajestEYE")
+    st.markdown("""
+    **Plateforme d'analyse économique intelligente** développée pour l'analyse 
+    et la prédiction des indicateurs économiques tunisiens.
+    """)
+    
+    # Présentation des fonctionnalités
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.subheader("🚀 Fonctionnalités")
+        st.markdown("""
+        - **NLP** : Traitement automatique du langage économique
+        - **Prédiction** : Modèles de prévision de l'inflation
+        - **Dashboard** : Visualisation des indicateurs économiques
+        - **Leviers** : Analyse des outils des banques centrales
+        """)
+    
+    with col2:
+        st.subheader("👋 Identification")
+        user = st.text_input("Quel est votre nom ?", key="user_name")
+        if st.button("✅ Dire bonjour", type="primary"):
+            if user.strip():
+                st.success(f"Bonjour, **{user}** 👋 !")
+                st.session_state.user_name = user
+                st.balloons()
+            else:
+                st.warning("Merci d'entrer votre nom.")
+
+import pandas as pd
+
+def page_nlp():
+    st.header("🧠 Traitement Automatique du Langage Économique")
+    
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("### 💬 Analysez vos requêtes économiques")
+        query = st.text_area(
+            "Entrez une requête économique :",
+            placeholder="Ex: Analysez l'impact de l'inflation sur le pouvoir d'achat...",
+            height=150
+        )
+        
+        if st.button("📤 Lancer l'analyse NLP", type="primary"):
+            if query.strip():
+                with st.spinner("Analyse en cours..."):
+                    st.success(f"Requête reçue : **{query}**")
+                    
+                    # Chargement du module NLP (exécution et retour d'un DataFrame)
+                    success = load_module("nlp_handler", query=query)
+                    if success:
+                        st.info("✅ Module NLP exécuté avec succès")
+
+                        # Récupérer le DataFrame résultat (ex: nlp_handler.result_df)
+                        nlp_result_df = getattr(sys.modules.get("nlp_handler"), "result_df", None)
+
+                        if nlp_result_df is not None and isinstance(nlp_result_df, pd.DataFrame):
+                            # S'assurer que les colonnes nécessaires existent
+                            if 'date' in nlp_result_df.columns and 'valeur' in nlp_result_df.columns:
+                                df = nlp_result_df.copy()
+
+                                # Renommer les colonnes comme demandé
+                                df = df.rename(columns={'date': 'Datetime', 'valeur': 'inflation_mom'})
+
+                                # Formater la colonne 'Datetime' en date (sans heure)
+                                df['Datetime'] = pd.to_datetime(df['Datetime']).dt.date
+
+                                # Afficher le DataFrame complet dans un style pandas classique
+                                st.markdown("### Résultat simplifié (Date et inflation_mom)")
+                                st.dataframe(df.style.format({"inflation_mom": "{:.2f}"}), use_container_width=True)
+
+                            else:
+                                st.warning("Les colonnes 'date' et/ou 'valeur' sont absentes dans les résultats NLP.")
+            else:
+                st.warning("Veuillez saisir une requête avant de lancer l'analyse.")
+
+    with col2:
+        st.markdown("### 📋 Exemples de requêtes")
+        st.markdown("""
+        - Impact de l'inflation sur l'économie
+        - Analyse des taux d'intérêt
+        - Évolution du PIB tunisien
+        - Politique monétaire BCT
+        """)
+
+def page_prediction():
+    st.header("📈 Prédiction de l'Inflation")
+
+    st.markdown("""
+    Utilisez notre modèle avancé pour prédire l'évolution de l'inflation 
+    en Tunisie basé sur les données historiques et les indicateurs économiques.
+    """)
+
+    # Chargement du module prediction
+    success = load_module("prediction")
+    if not success:
+        st.error("❌ Le module `prediction` n'a pas pu être chargé.")
+        return
+
+    module = sys.modules.get("prediction")
+    if module is None:
+        st.error("❌ Le module `prediction` n'a pas été importé correctement.")
+        return
+
+    # Recherche dynamique des fonctions disponibles dans prediction.py
+    algo_functions = {
+        attr: getattr(module, attr)
+        for attr in dir(module)
+        if callable(getattr(module, attr)) and attr.startswith("run_")
+    }
+
+    if not algo_functions:
+        st.warning("Aucune fonction de prédiction `run_...` trouvée dans `prediction.py`.")
+        return
+
+    # Préparation liste des noms d'algos affichables (ex: 'run_gradient_boosting' -> 'Gradient Boosting')
+    def pretty_name(func_name):
+        name = func_name.replace("run_", "").replace("_", " ").title()
+        return name
+
+    algo_names = {pretty_name(name): name for name in algo_functions.keys()}
+
+    selected_algo_pretty = st.selectbox("🧠 Choisissez l'algorithme :", list(algo_names.keys()))
+
+    if st.button("📊 Lancer la prédiction", type="primary"):
+        with st.spinner("🔄 En cours de prédiction..."):
+            method_name = algo_names[selected_algo_pretty]
+            predict_func = algo_functions[method_name]
+
+            try:
+                df_pred = predict_func()
+
+                if isinstance(df_pred, pd.DataFrame):
+                    st.success("✅ Prédictions générées avec succès !")
+
+                    st.markdown("### 🔢 Tableau des prédictions (avril → septembre 2025)")
+                    st.dataframe(df_pred.style.format({"inflation_pred": "{:.2f}"}), use_container_width=True)
+
+                    # Si tu as une fonction de tracé dans prediction.py, tu peux l'appeler ici
+                    if hasattr(module, "plot_predictions"):
+                        module.plot_predictions(df_pred)
+                else:
+                    st.warning("❌ La fonction n'a pas retourné un DataFrame.")
+            except Exception as e:
+                st.error(f"🚨 Erreur pendant l'exécution du modèle : {e}")
+
+def page_dashboard():
+    st.header("📊 Dashboard Économique")
+
+    st.markdown("""
+    Vous pouvez consulter le tableau de bord complet en cliquant sur le lien ci-dessous :
+    """)
+
+    url = "http://41.226.183.241:60100/skeyechart/dashboard/13/?native_filters_key=-LuAJVgSbz0"
+
+    # Affiche un lien cliquable
+    st.markdown(f"[➡️ Accéder au Tableau de Bord](<{url}>)", unsafe_allow_html=True)
+
+
+
+def page_leviers():
+    """Page d'étude des leviers économiques."""
+    st.header("🧩 Étude des Leviers des Banques Centrales")
+    
+    st.markdown("""
+    Analyse des outils économiques utilisés par les banques centrales 
+    pour influencer l'économie et maintenir la stabilité financière.
+    """)
+    
+    # Section Inflation - 5 niveaux
+    st.markdown("### 🔥 Analyse de l'Inflation")
+    
+    col1, col2 = st.columns([1, 1])
+    
+    with col1:
+        st.markdown("#### 📊 Sélectionnez le niveau d'analyse")
+        inflation_level = st.selectbox(
+            "Niveau d'analyse de l'inflation :",
+            [
+                "Niveau 1 - Vue d'ensemble",
+                "Niveau 2 - Analyse sectorielle", 
+                "Niveau 3 - Impact régional",
+                "Niveau 4 - Corrélations économiques",
+                "Niveau 5 - Modélisation avancée"
+            ],
+            key="inflation_level"
+        )
+    
+    with col2:
+        # Description du niveau sélectionné
+        descriptions = {
+            "Niveau 1 - Vue d'ensemble": "Analyse générale de l'évolution de l'inflation",
+            "Niveau 2 - Analyse sectorielle": "Impact de l'inflation par secteur économique",
+            "Niveau 3 - Impact régional": "Variations régionales de l'inflation",
+            "Niveau 4 - Corrélations économiques": "Relations avec autres indicateurs",
+            "Niveau 5 - Modélisation avancée": "Prédictions et scénarios complexes"
+        }
+        
+        st.info(f"**Description :** {descriptions[inflation_level]}")
+    
+    if st.button("📊 Analyser l'inflation", type="primary", key="analyze_inflation"):
+        with st.spinner("Analyse de l'inflation en cours..."):
+            level_number = inflation_level.split()[1]
+            st.success(f"Analyse de l'inflation - {inflation_level}")
+            
+            # Chargement du module avec le niveau d'inflation
+            success = load_module(
+                "etude_leviers", 
+                levier="inflation",
+                level=level_number
+            )
+            if success:
+                st.info("✅ Analyse de l'inflation terminée")
+    
+    st.markdown("---")
+    
+    # Section Autres Leviers
+    st.markdown("### 🛠️ Autres Leviers Économiques")
+    
+    col1, col2 = st.columns([1, 1])
+    
+    with col1:
+        st.markdown("#### 🎯 Sélectionnez un levier")
+        autres_leviers = {
+            "Taux d'intérêt": "Instrument principal de politique monétaire",
+            "Masse monétaire": "Contrôle de la liquidité dans l'économie", 
+            "Réserves de change": "Gestion des devises étrangères",
+            "Open market": "Opérations sur le marché monétaire",
+            "Réglementation bancaire": "Supervision du système bancaire"
+        }
+        
+        selected_levier = st.selectbox(
+            "Levier à analyser :",
+            list(autres_leviers.keys()),
+            key="other_levers"
+        )
+    
+    with col2:
+        st.info(f"**Description :** {autres_leviers[selected_levier]}")
+        
+        # Niveau d'analyse pour les autres leviers
+        level_other = st.selectbox(
+            "Niveau d'analyse :",
+            ["Basique", "Intermédiaire", "Avancé"],
+            index=1,
+            key="other_level"
+        )
+    
+    if st.button("📊 Analyser le levier", type="primary", key="analyze_lever"):
+        with st.spinner("Analyse du levier en cours..."):
+            st.success(f"Analyse du levier : **{selected_levier}** - Niveau {level_other}")
+            
+            # Chargement du module avec le levier sélectionné
+            success = load_module(
+                "etude_leviers",
+                levier=selected_levier.lower().replace(" ", "_"),
+                level=level_other.lower()
+            )
+            if success:
+                st.info("✅ Analyse du levier terminée")
+    
+    # Informations générales
+    st.markdown("---")
+    st.markdown("### 📚 Informations Générales")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("""
+        **💡 Inflation**
+        - 5 niveaux d'analyse
+        - Vue macro et micro
+        - Prédictions avancées
+        """)
+    
+    with col2:
+        st.markdown("""
+        **⚙️ Leviers Classiques**
+        - Taux d'intérêt
+        - Masse monétaire
+        - Réserves de change
+        """)
+    
+    with col3:
+        st.markdown("""
+        **🔍 Analyse Approfondie**
+        - Open market
+        - Réglementation
+        - Impact économique
+        """)
+
+def main():
+    """Fonction principale de l'application."""
+    
+    # Initialisation des états de session
+    if 'user_name' not in st.session_state:
+        st.session_state.user_name = ""
+    
+    # Affichage du logo
+    display_logo()
+    
+    # Menu de navigation
+    selected = create_sidebar_menu()
+    
+    # Routage des pages
+    if selected == "🏠 Accueil":
+        page_accueil()
+    elif selected == "🧠 NLP":
+        page_nlp()
+    elif selected == "📈 Prédiction":
+        page_prediction()
+    elif selected == "📊 Dashboard":
+        page_dashboard()
+    elif selected == "🧩 Leviers Économiques":
+        page_leviers()
+    
+    # Footer amélioré
+    st.markdown("---")
+    footer_col1, footer_col2, footer_col3 = st.columns([1, 2, 1])
+    
+    with footer_col2:
+        st.markdown("""
+        <div style='text-align: center; font-size: 14px; color: #666;'>
+            📅 <strong>MajestEYE</strong> - Plateforme d'Analyse Économique © 2025<br>
+            Développé avec ❤️ en Python & Streamlit
+        </div>
+        """, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()

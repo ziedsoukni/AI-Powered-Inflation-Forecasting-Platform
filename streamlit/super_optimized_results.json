@@ -1,0 +1,995 @@
+{
+  "timestamp": "2025-08-02T16:27:52.754256",
+  "algorithm": "Super Optimized Apriori",
+  "parameters": {
+    "min_support": 0.03,
+    "min_confidence": 0.6,
+    "min_lift": 1.2,
+    "max_rules": 10
+  },
+  "statistics": {
+    "total_records": 110,
+    "total_transactions": 110,
+    "frequent_itemsets": 82155,
+    "total_rules": 40
+  },
+  "perfect_formulas": {
+    "1": {
+      "level": "1",
+      "formula": "Données insuffisantes pour niveau 1",
+      "confidence": 0,
+      "quality": 0
+    },
+    "2": {
+      "level": "2",
+      "formula": "Si Rent Inflation Lagged=5 ET Mining Prod Lagged=2 → Inflation Niveau 2",
+      "primary_rule": {
+        "conditions": [
+          "rent_inflation_level_lagged=5",
+          "mining_prod_level_lagged=2"
+        ],
+        "confidence": 1.0,
+        "lift": 55.0,
+        "quality_score": 17.11
+      },
+      "statistics": {
+        "avg_confidence": 1.0,
+        "avg_quality": 17.11,
+        "total_rules": 10
+      },
+      "alternatives": [
+        {
+          "conditions": [
+            "imports_level_lagged=1",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        },
+        {
+          "conditions": [
+            "interest_rate_level_lagged=1",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        },
+        {
+          "conditions": [
+            "rent_inflation_level_lagged=5",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        },
+        {
+          "conditions": [
+            "min_wage_level_lagged=1",
+            "rent_inflation_level_lagged=5",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=1",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        },
+        {
+          "conditions": [
+            "min_wage_level_lagged=1",
+            "imports_level_lagged=1",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        },
+        {
+          "conditions": [
+            "interest_rate_level_lagged=1",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        },
+        {
+          "conditions": [
+            "interest_rate_level_lagged=1",
+            "min_wage_level_lagged=1",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        },
+        {
+          "conditions": [
+            "min_wage_level_lagged=1",
+            "industrial_prod_mom_level_lagged=3",
+            "mining_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 55.0
+        }
+      ]
+    },
+    "3": {
+      "level": "3",
+      "formula": "Si Imports Lagged=2 ET Interest Rate Lagged=3 → Inflation Niveau 3",
+      "primary_rule": {
+        "conditions": [
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "quality_score": 1.6992857142857145
+      },
+      "statistics": {
+        "avg_confidence": 1.0,
+        "avg_quality": 1.6992857142857143,
+        "total_rules": 10
+      },
+      "alternatives": [
+        {
+          "conditions": [
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3",
+            "manufacturing_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        },
+        {
+          "conditions": [
+            "mining_prod_level_lagged=1",
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        },
+        {
+          "conditions": [
+            "food_inflation_level_lagged=2",
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        },
+        {
+          "conditions": [
+            "rent_inflation_level_lagged=2",
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=2",
+            "interest_rate_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 3.928571428571429
+        }
+      ]
+    },
+    "4": {
+      "level": "4",
+      "formula": "Si Imports Lagged=4 ET Money Supply M1 Lagged=4 → Inflation Niveau 4",
+      "primary_rule": {
+        "conditions": [
+          "imports_level_lagged=4",
+          "money_supply_m1_level_lagged=4"
+        ],
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "quality_score": 1.0657377049180328
+      },
+      "statistics": {
+        "avg_confidence": 1.0,
+        "avg_quality": 1.0657377049180328,
+        "total_rules": 10
+      },
+      "alternatives": [
+        {
+          "conditions": [
+            "imports_level_lagged=4",
+            "money_supply_m1_level_lagged=4"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=4",
+            "manufacturing_prod_level_lagged=2",
+            "money_supply_m1_level_lagged=4"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        },
+        {
+          "conditions": [
+            "rent_inflation_level_lagged=2",
+            "interest_rate_level_lagged=5",
+            "money_supply_m1_level_lagged=4"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        },
+        {
+          "conditions": [
+            "rent_inflation_level_lagged=2",
+            "interest_rate_level_lagged=5",
+            "money_supply_m3_level_lagged=4"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        },
+        {
+          "conditions": [
+            "rent_inflation_level_lagged=2",
+            "interest_rate_level_lagged=5",
+            "money_supply_m2_level_lagged=4"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=4",
+            "money_supply_m3_level_lagged=4"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=4",
+            "money_supply_m2_level_lagged=4"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=4",
+            "money_supply_m3_level_lagged=4"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        },
+        {
+          "conditions": [
+            "imports_level_lagged=4",
+            "money_supply_m3_level_lagged=4",
+            "manufacturing_prod_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 1.8032786885245902
+        }
+      ]
+    },
+    "5": {
+      "level": "5",
+      "formula": "Si External Debt Lagged=2 ET Money Supply M2 Lagged=1 → Inflation Niveau 5",
+      "primary_rule": {
+        "conditions": [
+          "external_debt_level_lagged=2",
+          "money_supply_m2_level_lagged=1"
+        ],
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "quality_score": 2.365555555555555
+      },
+      "statistics": {
+        "avg_confidence": 1.0,
+        "avg_quality": 2.365555555555555,
+        "total_rules": 10
+      },
+      "alternatives": [
+        {
+          "conditions": [
+            "external_debt_level_lagged=2",
+            "cpi_housing_level_lagged=1"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        },
+        {
+          "conditions": [
+            "unemployment_rate_level_lagged=1",
+            "employed_persons_level_lagged=3"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        },
+        {
+          "conditions": [
+            "foreign_reserves_level_lagged=4",
+            "employed_persons_level_lagged=1"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        },
+        {
+          "conditions": [
+            "money_supply_m2_level_lagged=1",
+            "external_debt_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        },
+        {
+          "conditions": [
+            "min_wage_level_lagged=1",
+            "money_supply_m2_level_lagged=1",
+            "external_debt_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        },
+        {
+          "conditions": [
+            "external_debt_level_lagged=2",
+            "cpi_housing_level_lagged=1"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        },
+        {
+          "conditions": [
+            "min_wage_level_lagged=1",
+            "external_debt_level_lagged=2",
+            "cpi_housing_level_lagged=1"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        },
+        {
+          "conditions": [
+            "money_supply_m2_level_lagged=1",
+            "external_debt_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        },
+        {
+          "conditions": [
+            "cpi_level_lagged=1",
+            "money_supply_m2_level_lagged=1",
+            "external_debt_level_lagged=2"
+          ],
+          "confidence": 1.0,
+          "lift": 6.111111111111111
+        }
+      ]
+    }
+  },
+  "best_rules": {
+    "1": [],
+    "2": [
+      {
+        "antecedent": [
+          "rent_inflation_level_lagged=5",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "rent_inflation_level_lagged=5",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "min_wage_level_lagged=1",
+          "rent_inflation_level_lagged=5",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "min_wage_level_lagged=1",
+          "imports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=1",
+          "min_wage_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "min_wage_level_lagged=1",
+          "industrial_prod_mom_level_lagged=3",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 1.0,
+        "lift": 55.0,
+        "kulc": 1.0,
+        "conviction": 99.9,
+        "quality_score": 17.11,
+        "level": "2"
+      }
+    ],
+    "3": [
+      {
+        "antecedent": [
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3",
+          "manufacturing_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "mining_prod_level_lagged=1",
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "food_inflation_level_lagged=2",
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "rent_inflation_level_lagged=2",
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=2",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "conviction": 99.9,
+        "quality_score": 1.6992857142857145,
+        "level": "3"
+      }
+    ],
+    "4": [
+      {
+        "antecedent": [
+          "imports_level_lagged=4",
+          "money_supply_m1_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.08181818181818182,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5737704918032787,
+        "conviction": 99.9,
+        "quality_score": 1.0657377049180328,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=4",
+          "money_supply_m1_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.08181818181818182,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5737704918032787,
+        "conviction": 99.9,
+        "quality_score": 1.0657377049180328,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=4",
+          "manufacturing_prod_level_lagged=2",
+          "money_supply_m1_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.08181818181818182,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5737704918032787,
+        "conviction": 99.9,
+        "quality_score": 1.0657377049180328,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "rent_inflation_level_lagged=2",
+          "interest_rate_level_lagged=5",
+          "money_supply_m1_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.08181818181818182,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5737704918032787,
+        "conviction": 99.9,
+        "quality_score": 1.0657377049180328,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "rent_inflation_level_lagged=2",
+          "interest_rate_level_lagged=5",
+          "money_supply_m3_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.08181818181818182,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5737704918032787,
+        "conviction": 99.9,
+        "quality_score": 1.0657377049180328,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "rent_inflation_level_lagged=2",
+          "interest_rate_level_lagged=5",
+          "money_supply_m2_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.08181818181818182,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5737704918032787,
+        "conviction": 99.9,
+        "quality_score": 1.0657377049180328,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=4",
+          "money_supply_m3_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.07272727272727272,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5655737704918032,
+        "conviction": 99.9,
+        "quality_score": 1.0640983606557377,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=4",
+          "money_supply_m2_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.07272727272727272,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5655737704918032,
+        "conviction": 99.9,
+        "quality_score": 1.0640983606557377,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=4",
+          "money_supply_m3_level_lagged=4"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.07272727272727272,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5655737704918032,
+        "conviction": 99.9,
+        "quality_score": 1.0640983606557377,
+        "level": "4"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=4",
+          "money_supply_m3_level_lagged=4",
+          "manufacturing_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=4",
+        "support": 0.07272727272727272,
+        "confidence": 1.0,
+        "lift": 1.8032786885245902,
+        "kulc": 0.5655737704918032,
+        "conviction": 99.9,
+        "quality_score": 1.0640983606557377,
+        "level": "4"
+      }
+    ],
+    "5": [
+      {
+        "antecedent": [
+          "external_debt_level_lagged=2",
+          "money_supply_m2_level_lagged=1"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "external_debt_level_lagged=2",
+          "cpi_housing_level_lagged=1"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "unemployment_rate_level_lagged=1",
+          "employed_persons_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "foreign_reserves_level_lagged=4",
+          "employed_persons_level_lagged=1"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "money_supply_m2_level_lagged=1",
+          "external_debt_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "min_wage_level_lagged=1",
+          "money_supply_m2_level_lagged=1",
+          "external_debt_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "external_debt_level_lagged=2",
+          "cpi_housing_level_lagged=1"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "min_wage_level_lagged=1",
+          "external_debt_level_lagged=2",
+          "cpi_housing_level_lagged=1"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "money_supply_m2_level_lagged=1",
+          "external_debt_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      },
+      {
+        "antecedent": [
+          "cpi_level_lagged=1",
+          "money_supply_m2_level_lagged=1",
+          "external_debt_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=5",
+        "support": 0.03636363636363636,
+        "confidence": 1.0,
+        "lift": 6.111111111111111,
+        "kulc": 0.6111111111111112,
+        "conviction": 99.9,
+        "quality_score": 2.365555555555555,
+        "level": "5"
+      }
+    ]
+  }
+}

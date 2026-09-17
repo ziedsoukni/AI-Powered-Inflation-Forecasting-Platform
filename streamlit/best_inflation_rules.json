@@ -1,0 +1,460 @@
+{
+  "timestamp": "2025-08-02T15:58:58.727124",
+  "parameters": {
+    "min_support": 0.02,
+    "min_confidence": 0.4,
+    "min_lift": 1.0,
+    "max_rules_per_level": 15
+  },
+  "statistics": {
+    "total_transactions": 110,
+    "frequent_itemsets": {
+      "1": 100,
+      "2": 1971,
+      "3": 14837,
+      "4": 62830
+    },
+    "total_rules": 30
+  },
+  "best_rules_by_level": {
+    "1": [],
+    "2": [
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "foreign_reserves_level_lagged=1",
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "cpi_transport_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "money_supply_m1_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "min_wage_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "cpi_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "manufacturing_prod_level_lagged=2",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      },
+      {
+        "antecedent": [
+          "cpi_housing_level_lagged=1",
+          "exports_level_lagged=1",
+          "mining_prod_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=2",
+        "support": 0.01818181818181818,
+        "confidence": 0.6666666666666666,
+        "lift": 36.666666666666664,
+        "kulc": 0.8333333333333333,
+        "ir": 0.3333333333333333,
+        "quality_score": 11.499999999999998,
+        "level": "2"
+      }
+    ],
+    "3": [
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "manufacturing_prod_level_lagged=2",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "mining_prod_level_lagged=1",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "food_inflation_level_lagged=2",
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "rent_inflation_level_lagged=2",
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "cpi_transport_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "imports_level_lagged=2",
+          "min_wage_level_lagged=3",
+          "interest_rate_level_lagged=3"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      },
+      {
+        "antecedent": [
+          "interest_rate_level_lagged=3",
+          "cpi_housing_level_lagged=3",
+          "imports_level_lagged=2"
+        ],
+        "consequent": "inflation_mom_level=3",
+        "support": 0.02727272727272727,
+        "confidence": 1.0,
+        "lift": 3.928571428571429,
+        "kulc": 0.5535714285714286,
+        "ir": 0.8928571428571428,
+        "quality_score": 1.7000000000000002,
+        "level": "3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-08-02T16:43:13.744004",
+  "parameters": {
+    "min_support": 0.02,
+    "min_confidence": 0.45,
+    "min_lift": 1.2,
+    "max_rules_per_level": 15,
+    "quality_threshold": 0.5,
+    "max_itemset_size": 5
+  },
+  "statistics": {
+    "data_quality": {
+      "total_records": 110,
+      "total_transactions": 110,
+      "variables_used": 23,
+      "avg_transaction_size": 18.863636363636363
+    },
+    "frequent_itemsets": {
+      "1": 98
+    },
+    "rules_by_level": {
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "variable_importance": {
+      "exports_level_lagged": 0.045454545454545456,
+      "food_inflation_level_lagged": 0.045454545454545456,
+      "interest_rate_level_lagged": 0.045454545454545456,
+      "imports_level_lagged": 0.045454545454545456,
+      "foreign_reserves_level_lagged": 0.045454545454545456,
+      "cpi_transport_level_lagged": 0.045454545454545456,
+      "cpi_housing_level_lagged": 0.045454545454545456,
+      "money_supply_m1_level_lagged": 0.045454545454545456,
+      "money_supply_m3_level_lagged": 0.045454545454545456,
+      "money_supply_m2_level_lagged": 0.045454545454545456,
+      "cpi_level_lagged": 0.045454545454545456,
+      "rent_inflation_level_lagged": 0.045454545454545456,
+      "external_debt_level_lagged": 0.045454545454545456,
+      "tourism_revenue_level_lagged": 0.045454545454545456,
+      "industrial_prod_mom_level_lagged": 0.04545454545454545,
+      "min_wage_level_lagged": 0.04545454545454545,
+      "employed_persons_level_lagged": 0.04545454545454545,
+      "unemployment_rate_level_lagged": 0.04545454545454545,
+      "inflation_mom_level": 0.03636363636363637,
+      "manufacturing_prod_level_lagged": 0.03636363636363636
+    }
+  },
+  "global_metrics": {
+    "total_rules": 0
+  },
+  "rules_by_level": {
+    "1": [],
+    "2": [],
+    "3": []
+  }
+}

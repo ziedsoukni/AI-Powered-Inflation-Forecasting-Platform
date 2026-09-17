@@ -1,0 +1,73 @@
+st.markdown("""
+<style>
+/* Fond sombre dégradé futuriste */
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #e0e6f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Style sidebar */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #041a2b, #042f4a);
+    border-right: 2px solid #00aaff;
+}
+
+/* Liens menu option_menu */
+.css-1d391kg a {
+    color: #66ccff !important;
+    font-weight: 600;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+.css-1d391kg a:hover {
+    color: #00ffff !important;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* Boutons */
+.stButton > button {
+    background: #0073e6;
+    border-radius: 15px;
+    color: white;
+    font-weight: 600;
+    padding: 10px 25px;
+    box-shadow: 0 0 15px #00bfff;
+    transition: all 0.3s ease;
+}
+.stButton > button:hover {
+    background: #00bfff;
+    box-shadow: 0 0 25px #00ffff;
+}
+
+/* Titres */
+h1, h2, h3 {
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 10px #00bfff;
+}
+
+/* Inputs */
+input, textarea, select {
+    background-color: #112233;
+    border: 1px solid #00aaff;
+    border-radius: 8px;
+    color: #a0c8ff;
+}
+
+/* Dataframe style */
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+    box-shadow: 0 0 20px #0099ff55;
+}
+
+/* Footer */
+footer {
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px 0;
+    letter-spacing: 0.8px;
+}
+</style>
+""", unsafe_allow_html=True)

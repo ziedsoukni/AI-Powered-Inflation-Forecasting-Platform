@@ -1,0 +1,131 @@
+{
+    "1": {
+        "level": "1",
+        "formula": "Si Interest Rate Lagged = 1 → Inflation niveau 1",
+        "primary_rule": {
+            "conditions": [
+                "interest_rate_level_lagged=1"
+            ],
+            "confidence": 0.11538461538461538,
+            "lift": 4.230769230769231,
+            "conviction": 1.099604743083004,
+            "strength": 0.536789297658863
+        },
+        "reliability_metrics": {
+            "avg_confidence": 0.11538461538461538,
+            "avg_lift": 4.230769230769231,
+            "sample_size": 1,
+            "reliability_score": 24.40828402366864
+        },
+        "key_factors": {
+            "interest_rate_level_lagged": 1
+        },
+        "alternative_rules": []
+    },
+    "2": {
+        "level": "2",
+        "formula": "Si Food Inflation Lagged = 2 ET Rent Inflation Lagged = 1 ET Min Wage Lagged = 3 → Inflation niveau 2",
+        "primary_rule": {
+            "conditions": [
+                "food_inflation_level_lagged=2",
+                "rent_inflation_level_lagged=1",
+                "min_wage_level_lagged=3"
+            ],
+            "confidence": 1.0,
+            "lift": 2.1153846153846154,
+            "conviction": Infinity,
+            "strength": 21.153846153846153
+        },
+        "reliability_metrics": {
+            "avg_confidence": 0.8666666666666668,
+            "avg_lift": 1.8333333333333335,
+            "sample_size": 5125,
+            "reliability_score": 79.44444444444446
+        },
+        "key_factors": {
+            "food_inflation_level_lagged": 839,
+            "rent_inflation_level_lagged": 1039,
+            "min_wage_level_lagged": 911,
+            "manufacturing_prod_level_lagged": 709,
+            "industrial_prod_mom_level_lagged": 389
+        },
+        "alternative_rules": [
+            {
+                "conditions": [
+                    "manufacturing_prod_level_lagged=2",
+                    "min_wage_level_lagged=3"
+                ],
+                "confidence": 0.8333333333333334,
+                "lift": 1.762820512820513
+            },
+            {
+                "conditions": [
+                    "manufacturing_prod_level_lagged=2",
+                    "min_wage_level_lagged=3"
+                ],
+                "confidence": 0.8333333333333334,
+                "lift": 1.762820512820513
+            },
+            {
+                "conditions": [
+                    "manufacturing_prod_level_lagged=2",
+                    "industrial_prod_mom_level_lagged=2",
+                    "min_wage_level_lagged=3"
+                ],
+                "confidence": 0.8333333333333334,
+                "lift": 1.762820512820513
+            }
+        ]
+    },
+    "3": {
+        "level": "3",
+        "formula": "Si Gdp Lagged = 1 → Inflation niveau 3",
+        "primary_rule": {
+            "conditions": [
+                "gdp_level_lagged=1"
+            ],
+            "confidence": 1.0,
+            "lift": 2.0,
+            "conviction": Infinity,
+            "strength": 20.0
+        },
+        "reliability_metrics": {
+            "avg_confidence": 1.0,
+            "avg_lift": 2.0,
+            "sample_size": 16750,
+            "reliability_score": 100.0
+        },
+        "key_factors": {
+            "gdp_level_lagged": 33,
+            "unemployment_rate_level_lagged": 2287,
+            "food_inflation_level_lagged": 1583,
+            "employed_persons_level_lagged": 2623,
+            "external_debt_level_lagged": 2772
+        },
+        "alternative_rules": [
+            {
+                "conditions": [
+                    "unemployment_rate_level_lagged=2"
+                ],
+                "confidence": 1.0,
+                "lift": 2.0
+            },
+            {
+                "conditions": [
+                    "food_inflation_level_lagged=1",
+                    "employed_persons_level_lagged=2"
+                ],
+                "confidence": 1.0,
+                "lift": 2.0
+            },
+            {
+                "conditions": [
+                    "food_inflation_level_lagged=1",
+                    "external_debt_level_lagged=3"
+                ],
+                "confidence": 1.0,
+                "lift": 2.0
+            }
+        ]
+    }
+}
