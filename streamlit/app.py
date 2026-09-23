@@ -9,14 +9,15 @@ import logging
 import time
 import json
 import hashlib
-from pathlib import Path
+import base64
+import requests
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from datetime import datetime
-import locale
 from babel.dates import format_datetime
+from streamlit_lottie import st_lottie
 
 def get_datetime_fr():
     now = datetime.now()
@@ -25,6 +26,17 @@ def get_datetime_fr():
     # Capitaliser chaque mot pour un rendu propre
     date_fr = ' '.join(word.capitalize() for word in date_fr.split())
     return date_fr
+
+# 📁 Configuration des chemins (relatifs au fichier, donc portables)
+BASE_DIR = Path(__file__).resolve().parent
+MODULES_DIR = BASE_DIR / "modules"
+ASSETS_DIR = BASE_DIR / "assets"
+LOGO_PATH = ASSETS_DIR / "logo.png"
+BACKGROUND_PATH = ASSETS_DIR / "background.jpg"
+USERS_FILE = BASE_DIR / "users.json"
+
+# Mot de passe de l'admin créé au premier lancement (à définir via variable d'environnement)
+DEFAULT_ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "pass123")
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO)
@@ -316,7 +328,7 @@ def init_admin_user():
     if not users:
         users = {
             "admin": {
-                "password": hash_password("pass123"),
+                "password": hash_password(DEFAULT_ADMIN_PASSWORD),
                 "role": "admin",
                 "created_at": datetime.now().isoformat(),
                 "full_name": "Administrateur"
@@ -325,12 +337,12 @@ def init_admin_user():
         save_users(users)
     return users
 
-import streamlit as st
-import base64
-from pathlib import Path
-
 def set_background(local_img_path):
-    # Lire l’image et l’encoder en base64
+    """Applique une image de fond à l'application (ignorée si le fichier est absent)."""
+    if not Path(local_img_path).exists():
+        logger.warning(f"Image de fond introuvable : {local_img_path}")
+        return
+    # Lire l'image et l'encoder en base64
     with open(local_img_path, "rb") as img_file:
         img_bytes = img_file.read()
         encoded = base64.b64encode(img_bytes).decode()
@@ -351,15 +363,8 @@ def set_background(local_img_path):
         unsafe_allow_html=True
     )
 
-# Appel de la fonction avec le chemin de ton image
-set_background("C:\\Users\\user\\Desktop\\streamlit\\assets\\background.jpg")
-
-# 📁 Configuration des chemins
-BASE_DIR = Path(__file__).parent
-MODULES_DIR = BASE_DIR / "modules"
-ASSETS_DIR = BASE_DIR / "assets"
-LOGO_PATH = ASSETS_DIR / "logo.png"
-USERS_FILE = BASE_DIR / "users.json"
+# Application de l'image de fond
+set_background(BACKGROUND_PATH)
 
 
 
@@ -541,7 +546,7 @@ def create_sidebar_menu():
         selected = option_menu(
             menu_title="MajestEYE",
             options=menu_options,
-            icons=["house", "chat-dots", "graph-up", "bar-chart", "puzzle", "people"],
+            icons=["house", "chat-dots", "graph-up", "magic", "bar-chart", "puzzle", "people"],
             default_index=0,
             styles={
                 # Ajoute tes styles option_menu ici si besoin
@@ -735,14 +740,9 @@ def create_stats_cards():
 
 
 
-import streamlit as st
-import time
-import requests
-from streamlit_lottie import st_lottie
-
 def load_lottieurl(url: str):
     try:
-        r = requests.get(url)
+        r = requests.get(url, timeout=5)
         if r.status_code != 200:
             return None
         return r.json()
@@ -751,7 +751,6 @@ def load_lottieurl(url: str):
 
 def login_page():
     """Affiche la page de connexion avec animation Lottie"""
-    st.set_page_config(page_title="Connexion", page_icon="🔐", layout="centered")
     st.markdown("<h1 style='text-align: center;'>🔐 Connexion à la plateforme d'analyse économique</h1>", unsafe_allow_html=True)
     st.markdown("## ")
 
@@ -774,7 +773,7 @@ def login_page():
             else:
                 st.info("Vérification en cours...")
 
-            time.sleep(2)  # Simule temps de vérification
+            time.sleep(1)
 
             # Vérification dans la base des utilisateurs
             if username in users and verify_password(users[username]["password"], password):
@@ -894,7 +893,7 @@ def page_nlp():
                 st.success("✅ Analyse terminée avec succès!")
                 
                 # Simulation de résultats
-                success = load_module("nlp_handler", query=query)
+                load_module("nlp_handler", query=query)
     
     with col2:
         st.markdown("### 📚 Guide d'Utilisation")
@@ -980,9 +979,9 @@ def page_prediction():
             confidence = st.slider("🎯 Niveau de confiance", 80, 99, 95)
 
             if selected_algo == "Gradient Boosting":
-                nb_mois = st.slider("🗓️ Nombre de mois à prédire (GB)", 1, 12, 6)
+                nb_mois = st.slider("🗓️ Nombre de mois à prédire (GB)", 1, 9, 6)
             elif selected_algo == "Random Forest":
-                nb_mois_rf = st.slider("🗓️ Nombre de mois à prédire (RF)", 1, 12, 6)
+                nb_mois_rf = st.slider("🗓️ Nombre de mois à prédire (RF)", 1, 9, 6)
 
     if st.button("🚀 Lancer la Prédiction", type="primary", use_container_width=True):
         with st.spinner("🔄 Génération des prédictions..."):
@@ -1038,20 +1037,6 @@ def page_prediction():
     st.markdown("⚡ <span style='color: #ffc107; font-weight: bold;'>Random Forest</span> <span style='color: #6c757d;'>recommandé pour la vitesse</span>", unsafe_allow_html=True)
     st.markdown("🌳 <span style='color: #007bff; font-weight: bold;'>Random Forest</span> <span style='color: #6c757d;'>optimal pour la robustesse</span>", unsafe_allow_html=True)
 
-
-import streamlit as st
-import json
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
-import streamlit as st
-import json
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 def page_leviers():
     """Page d'analyse des leviers d'inflation avec résultats Skeyepredict"""
@@ -1507,7 +1492,7 @@ def page_leviers():
         with tech_col2:
             st.metric("📊 Features", "47", "Variables économiques")
         with tech_col3:
-            st.metric("🔬 Validation", "Cross-Val", "K-Fold = 10")
+            st.metric("🔬 Validation", "Cross-Val", "K-Fold = 5")
         with tech_col4:
             st.metric("⏱️ Latence", "< 100ms", "Prédiction temps réel")
         
@@ -1519,13 +1504,13 @@ def page_leviers():
             ### 🔬 Caractéristiques Techniques
             
             **🧠 Architecture:**
-            - Random Forest avec 500 arbres de décision
-            - Profondeur maximale: 15 niveaux
+            - Random Forest avec 150 arbres de décision
+            - Profondeur maximale: 12 niveaux
             - Échantillonnage bootstrap pour robustesse
             
             **📊 Features Engineering:**
             - 47 variables économiques macro et micro
-            - Transformations lag (retardées) 1-3 mois
+            - Transformations lag (retardées) 1-6 mois
             - Normalisation Z-score pour stabilité
             
             **🎯 Performance:**
@@ -1539,8 +1524,8 @@ def page_leviers():
             st.markdown("""
             ### ⚙️ Paramètres Optimaux
             
-            - **n_estimators:** 500
-            - **max_depth:** 15
+            - **n_estimators:** 150
+            - **max_depth:** 12
             - **min_samples_split:** 5
             - **min_samples_leaf:** 2
             - **max_features:** sqrt

@@ -13,12 +13,18 @@ import warnings
 warnings.filterwarnings('ignore')
 import streamlit as st
 
+# Chemins portables (relatifs au dossier streamlit/)
+from pathlib import Path as _Path
+_APP_DIR = _Path(__file__).resolve().parent.parent
+DATA_DIR = _APP_DIR / "data"
+MODELS_DIR = _APP_DIR / "models"
+
 # Configuration du logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 class InflationRFPredictor:
-    def __init__(self, model_dir="models"):
+    def __init__(self, model_dir=str(MODELS_DIR)):
         self.model = None
         self.scaler = StandardScaler()
         self.feature_cols = []
@@ -402,7 +408,7 @@ def run_prediction(parquet_path, nb_mois=6):
     return predictor.run_pipeline(parquet_path, nb_mois)
 
 def run_random_forest(nb_mois: int = 6) -> pd.DataFrame:
-    parquet_path = r"C:\Users\user\Desktop\streamlit\data\fichierpred.parquet"
+    parquet_path = str(DATA_DIR / "fichierpred.parquet")
     predictor = InflationRFPredictor()
 
     start_month = 4
@@ -422,9 +428,8 @@ def run_random_forest(nb_mois: int = 6) -> pd.DataFrame:
     
     # Si échec ou pas de données
     return pd.DataFrame()
-9
 
-# Usage
+
 # Usage
 if __name__ == "__main__":  
     try:

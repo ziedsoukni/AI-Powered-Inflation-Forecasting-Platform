@@ -15,6 +15,12 @@ from datetime import datetime
 import warnings
 import streamlit as st
 
+# Chemins portables (relatifs au dossier streamlit/)
+from pathlib import Path as _Path
+_APP_DIR = _Path(__file__).resolve().parent.parent
+DATA_DIR = _APP_DIR / "data"
+MODELS_DIR = _APP_DIR / "models"
+
 # === CONFIG LOGGING ===
 warnings.filterwarnings('ignore')
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -43,7 +49,7 @@ class DataManager:
 # === CONFIGURATION ===
 class ConfigManager:
     def __init__(self):
-        self.models_dir = "./models"
+        self.models_dir = str(MODELS_DIR)
         os.makedirs(self.models_dir, exist_ok=True)
         self.variables_synonyms = self._load_variables_synonyms()
         self.operations_dict = self._load_operations_dict()
@@ -388,7 +394,7 @@ if __name__ == "__main__":
     pd.set_option('display.width', 120)
     pd.set_option('display.float_format', '{:.2f}'.format)
 
-    chemin_parquet = r"C:\Users\user\Desktop\streamlit\data\final401.parquet"
+    chemin_parquet = str(DATA_DIR / "final401.parquet")
     system = EconomicSystem(chemin_parquet)
 
     if system.initialize():
@@ -432,7 +438,7 @@ if __name__ == "__main__":
 
 
 def run_nlp_analysis(query):
-    chemin_parquet = r"C:\Users\user\Desktop\streamlit\data\final401.parquet"
+    chemin_parquet = str(DATA_DIR / "final401.parquet")
     system = EconomicSystem(chemin_parquet)
     if system.initialize():
         # Découpe en questions multiples

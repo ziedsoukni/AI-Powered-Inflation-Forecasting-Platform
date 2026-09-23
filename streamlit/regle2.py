@@ -1,8 +1,11 @@
 import re
 
 # Fichier d'origine et fichier de sortie
-input_path = r"C:\Users\user\Desktop\streamlit\data\dis3_cleaned.dat"
-output_path = r"C:\Users\user\Desktop\streamlit\data\dis3_cleaned_resumed.dat"  # Tu peux remplacer ce nom si tu veux écraser l'ancien
+from pathlib import Path
+
+DATA_DIR = Path(__file__).resolve().parent / "data"
+input_path = DATA_DIR / "dis3_cleaned.dat"
+output_path = DATA_DIR / "dis3_cleaned_resumed.dat"  # Tu peux remplacer ce nom si tu veux écraser l'ancien
 
 # Variables à ne pas modifier
 exclude_keys = {"id", "annee", "datetime", "mois", "trimestre"}

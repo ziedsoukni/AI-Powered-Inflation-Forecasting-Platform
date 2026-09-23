@@ -78,9 +78,13 @@ def log(message, level="INFO"):
 # Fonction d'envoi d'email en cas d'erreur
 def send_error_email(subject, body):
     try:
-        sender_email = "zsoukni9@gmail.com"
-        receiver_email = "ziedsou1@gmail.com"
-        password = "zvyd qeut uxbx ehtj "  # Utiliser un mot de passe d'application sécurisé
+        # Identifiants lus depuis les variables d'environnement (jamais en clair dans le code)
+        sender_email = os.environ.get("SMTP_SENDER")
+        receiver_email = os.environ.get("SMTP_RECEIVER")
+        password = os.environ.get("SMTP_APP_PASSWORD")
+        if not (sender_email and receiver_email and password):
+            print("Notification e-mail ignorée : SMTP_SENDER, SMTP_RECEIVER ou SMTP_APP_PASSWORD non définis.")
+            return
 
         # Créer le message MIME
         message = MIMEMultipart()
@@ -900,15 +904,14 @@ def is_first_day_of_year():
 # Planifier les tâches
 def schedule_tasks():
     # Tâches quotidiennes
-    schedule.every().day.at("02:07").do(scrape_and_notify)  # Quotidien à minuit
-    schedule.every().day.at("02:07").do(upload_csv_to_hdfs)  # Quotidien à minuit
+    schedule.every().day.at("02:07").do(scrape_and_notify)  # Quotidien à 02:07
+    schedule.every().day.at("02:07").do(lambda: upload_csv_to_hdfs(local_directory=r'C:\Users\user\Documents\datascript', hdfs_directory='/datalake/raw_data/'))  # Quotidien à 02:07
     # Tâches mensuelles (le premier jour du mois)
     schedule.every().day.at("02:07").do(lambda: scrape_all_tables() if is_first_day_of_month() else None)
-    schedule.every().day.at("02:07").do(lambda: scrape_all_tables_ipc(url="https://www.ins.tn/statistiques/90#", filename="inflation_resumes") if is_first_day_of_month() else None)
+    schedule.every().day.at("02:07").do(lambda: scrape_all_tables_ipc() if is_first_day_of_month() else None)
     schedule.every().day.at("02:07").do(lambda: upload_csv_to_hdfs(local_directory=r'C:\Users\user\Documents\datascript', hdfs_directory='/datalake/raw_data/') if is_first_day_of_month() else None)
     # Tâches annuelles (le premier jour de l'année)
-    schedule.every().day.at("02:07").do(lambda: scrape_table_balance(url="https://www.bct.gov.tn/bct/siteprod/tableau_statistique_a.jsp?params=PL203190", filename="export.csv") if is_first_day_of_year() else None)
-    schedule.every().day.at("02:07").do(lambda: scrape_table_balance(url="https://www.bct.gov.tn/bct/siteprod/tableau_statistique_a.jsp?params=PL203200", filename="import.csv") if is_first_day_of_year() else None)
+    schedule.every().day.at("02:07").do(lambda: scrape_all_tables_balance() if is_first_day_of_year() else None)
 
     schedule.every().day.at("02:07").do(lambda: fetch_and_save_inflation_data() if is_first_day_of_year() else None)
     schedule.every().day.at("02:07").do(lambda: transformation_globale(files_mapping) if is_first_day_of_year() else None)

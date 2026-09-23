@@ -15,6 +15,12 @@ from sklearn.inspection import permutation_importance
 import joblib
 import os
 import streamlit as st
+
+# Chemins portables (relatifs au dossier streamlit/)
+from pathlib import Path as _Path
+_APP_DIR = _Path(__file__).resolve().parent.parent
+DATA_DIR = _APP_DIR / "data"
+MODELS_DIR = _APP_DIR / "models"
 warnings.filterwarnings('ignore')
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -29,12 +35,12 @@ class InflationPredictor:
         self.selected_features = []
         self.feature_importance_scores = {}
         self.feature_selector = None
-        self.model_path = "models/inflation_model.pkl"
-        self.feature_selector_path = "models/feature_selector.pkl"
+        self.model_path = str(MODELS_DIR / "inflation_model.pkl")
+        self.feature_selector_path = str(MODELS_DIR / "feature_selector.pkl")
         self.data_quality_report = {}
         
         # Create models directory if not exists
-        os.makedirs("models", exist_ok=True)
+        os.makedirs(MODELS_DIR, exist_ok=True)
     
     def validate_data_quality(self, df) -> bool:
         """Comprehensive data quality validation"""
@@ -682,7 +688,7 @@ class InflationPredictor:
             raise
 
 def run_gradient_boosting(nb_mois: int = 6) -> pd.DataFrame:
-    parquet_path = r"C:\Users\user\Desktop\streamlit\data\fichierpred.parquet"
+    parquet_path = str(DATA_DIR / "fichierpred.parquet")
     predictor = InflationPredictor()
 
     start_month = 4

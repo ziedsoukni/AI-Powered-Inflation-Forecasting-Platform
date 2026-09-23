@@ -1,0 +1,28 @@
+# --- Application Streamlit ---
+streamlit>=1.35
+streamlit-option-menu
+streamlit-lottie
+pandas
+numpy
+pyarrow
+plotly
+matplotlib
+seaborn
+babel
+requests
+scikit-learn
+joblib
+rapidfuzz
+spacy
+# Modèle français spaCy (à installer séparément) :
+#   python -m spacy download fr_core_news_sm
+
+# --- Pipeline de collecte (phase 1) ---
+beautifulsoup4
+schedule
+tabula-py
+PyPDF2
+pdfplumber
+hdfs
+tenacity
+certifi
